@@ -1,14 +1,10 @@
 # 🥥 Caipirinha Bot — Trading automático en Revolut X (proyecto demostrativo)
 
-> **Estado: archivado / no mantenido**. Este proyecto documenta un experimento personal para operar en **Revolut X** sin API pública. Funcionó durante unos meses en 2025, pero desde entonces la plataforma cambia con demasiada frecuencia y **no se garantizan ni soporte ni beneficios**.
-
 ---
 
 ## ✨ Por qué existe
 
-Revolut X ofrecía *spreads* atractivos en pares cripto‑fiat (sobre todo **USDT‑EUR**). La falta de API oficial impedía automatizar estrategias de *market‑making* pasivas; Caipirinha Bot cubrió ese hueco controlando la interfaz web con **Selenium**.
-
-> **Nota sobre ingresos**: Con la prohibición de USDT para usuarios europeos (abril 2025) la liquidez cayó en picado y los resultados se deterioraron. Hoy el bot sirve únicamente como referencia técnica.
+Revolut X ofrecía *spreads* atractivos en varios pares cripto‑fiat de **USDT** y **USDC** (por ejemplo **USDT‑EUR**). La falta de API oficial impedía automatizar estrategias de *market‑making* pasivas; Caipirinha Bot cubrió ese hueco controlando la interfaz web con **Selenium**.
 
 ---
 
@@ -38,7 +34,7 @@ Asegúrate de descargar **ChromeDriver** que coincida con tu versión de Chrome 
 
 Caipirinha Bot **no** implementa una cuadrícula clásica. Su meta es mantener la **primera posición en el libro de órdenes** (*top‑of‑book*) con un *tick* mínimo de 0.0001 por delante del mejor competidor.
 
-1. **Pares admitidos** — definidos en `PAIRS_URLS` (`USDC‑EUR` por defecto).
+1. **Pares admitidos** — definidos en `PAIRS_URLS` (`USDC‑EUR` por defecto). El bot podía manejar **hasta cuatro pares a la vez**, dividiendo el capital según nuestras preferencias.
 2. **Mirroring top‑of‑book**
 
    * **Buy**: lee el mejor precio y volumen (`obtener_top_buy`, `obtener_valor_top_buy`). Si el volumen rival supera un umbral dinámico (`500 × diferencia_en_ticks`) sube la puja en +0.0001; si no, se sitúa detrás del segundo mejor nivel para no sobrepagar.
